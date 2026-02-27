@@ -70,10 +70,9 @@ function requireRole(role) {
   };
 }
 
-/* ---------------- HOME FIX (IMPORTANT FOR RENDER) ---------------- */
-
+// Serve frontend homepage
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public/login.html"));
+  res.sendFile(__dirname + "/public/index.html");
 });
 
 /* ---------------- REGISTRATION ---------------- */
@@ -245,4 +244,6 @@ app.get("/admin", requireLogin, requireRole("admin"), (req, res) =>
 /* ---------------- START SERVER ---------------- */
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log("Server running on port " + PORT));
+app.listen(PORT, () => {
+  console.log("Server running on port " + PORT);
+});
