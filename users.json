@@ -1,5 +1,19 @@
 [
-  { "username": "doctor1", "password": "123", "role": "doctor", "department": "Cardiology" },
-  { "username": "doctor2", "password": "123", "role": "doctor", "department": "Neurology" },
-  { "username": "admin", "password": "123", "role": "admin" }
+  {
+    "username": "doctor1",
+    "email": "doctor1@gmail.com",
+    "role": "doctor",
+    "department": "Cardiology"
+  },
+  {
+    "username": "doctor2",
+    "email": "doctor2@gmail.com",
+    "role": "doctor",
+    "department": "Neurology"
+  },
+  {
+    "username": "admin",
+    "email": "admin@gmail.com",
+    "role": "admin"
+  }
 ]

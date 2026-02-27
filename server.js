@@ -100,20 +100,25 @@ app.post("/register", (req, res) => {
 /* ---------------- LOGIN ---------------- */
 
 app.post("/login", (req, res) => {
-  const { username, password } = req.body;
+  try {
+    const { username, email } = req.body;
 
-  const users = read(usersFile);
-  const user = users.find(
-    (u) => u.username === username && u.password === password
-  );
+    const users = read(usersFile);
 
-  if (!user) return res.send("Invalid credentials ❌");
+    const user = users.find(
+      (u) => u.username === username && u.email === email
+    );
 
-  req.session.user = user;
+    if (!user) {
+      return res.json({ success: false });
+    }
 
-  if (user.role === "doctor") return res.redirect("/doctor");
-  if (user.role === "admin") return res.redirect("/admin");
-  return res.redirect("/patient");
+    return res.json({ success: true, role: user.role });
+
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ success: false });
+  }
 });
 
 /* ---------------- LOGOUT ---------------- */

@@ -1,26 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hospital Queue - Login</title>
+  <title>Login</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <h1>Hospital Queue Management</h1>
 
-  <div class="container">
-    <h1>Hospital Queue Management</h1>
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="email" id="email" placeholder="Gmail" required>
+    <button type="submit">Login</button>
+  </form>
 
-    <div class="card">
-      <h2>Login</h2>
-
-      <form id="loginForm">
-        <input type="text" id="username" placeholder="Username" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-      </form>
-
-      <p id="error" style="color:red;"></p>
-    </div>
-  </div>
+  <p id="error" style="color:red;"></p>
 
   <script>
     document.getElementById("loginForm").addEventListener("submit", function(e) {
@@ -31,7 +24,7 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           username: document.getElementById("username").value,
-          password: document.getElementById("password").value
+          email: document.getElementById("email").value
         })
       })
       .then(res => res.json())
@@ -39,10 +32,10 @@
         if (data.success) {
           window.location.href = "/" + data.role;
         } else {
-          document.getElementById("error").innerText = "Invalid username or password";
+          document.getElementById("error").innerText = "Invalid username or gmail";
         }
       })
-      .catch(err => {
+      .catch(() => {
         document.getElementById("error").innerText = "Server error";
       });
     });
