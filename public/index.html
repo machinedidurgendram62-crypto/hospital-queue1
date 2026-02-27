@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login</title>
+  <title>Hospital Queue - Login</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hospital Login</h1>
 
-  <form id="loginForm">
-    <input type="text" id="username" placeholder="Username" required>
-    <input type="password" id="password" placeholder="Password" required>
-    <button type="submit">Login</button>
-  </form>
+  <div class="container">
+    <h1>Hospital Queue Management</h1>
 
-   <p id="error" style="color:red;"></p>
+    <div class="card">
+      <h2>Login</h2>
+
+      <form id="loginForm">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+
+      <p id="error" style="color:red;"></p>
+    </div>
+  </div>
 
   <script>
     document.getElementById("loginForm").addEventListener("submit", function(e) {
@@ -32,10 +39,14 @@
         if (data.success) {
           window.location.href = "/" + data.role;
         } else {
-          document.getElementById("error").innerText = "Invalid credentials";
+          document.getElementById("error").innerText = "Invalid username or password";
         }
+      })
+      .catch(err => {
+        document.getElementById("error").innerText = "Server error";
       });
     });
   </script>
+
 </body>
 </html>
