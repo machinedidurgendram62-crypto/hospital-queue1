@@ -1,0 +1,5 @@
+[
+  { "username": "doctor1", "password": "123", "role": "doctor", "department": "Cardiology" },
+  { "username": "doctor2", "password": "123", "role": "doctor", "department": "Neurology" },
+  { "username": "admin", "password": "123", "role": "admin" }
+]

@@ -1,0 +1,24 @@
+<h2>Doctor Dashboard</h2>
+
+<h3>Department Appointments</h3>
+<ul id="appointments"></ul>
+
+<a href="/logout">Logout</a>
+
+<script>
+fetch("/appointments")
+  .then(res => res.json())
+  .then(data => {
+    const list = document.getElementById("appointments");
+    data.forEach(a => {
+      list.innerHTML += `
+        <li>
+          ${a.date} ${a.time} -
+          ${a.patient} -
+          ${a.reason} -
+          ${a.status}
+        </li>
+      `;
+    });
+  });
+</script>
