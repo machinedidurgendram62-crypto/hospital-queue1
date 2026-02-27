@@ -94,7 +94,7 @@ app.post("/register", (req, res) => {
   });
 
   write(usersFile, users);
-  res.redirect("/login.html");
+  res.redirect("/index.html");
 });
 
 /* ---------------- LOGIN ---------------- */
@@ -125,7 +125,7 @@ app.post("/login", (req, res) => {
 
 app.get("/logout", (req, res) => {
   req.session.destroy();
-  res.redirect("/login.html");
+  res.redirect("/index.html");
 });
 
 /* ---------------- TOKEN SYSTEM ---------------- */
